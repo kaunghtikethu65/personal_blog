@@ -18,3 +18,6 @@ Route::get('/', 'App\Http\Controllers\UiController@index');
 
 //Admin
 Route::get('/admin','App\Http\Controllers\admin\AdminDashboardController@index');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
