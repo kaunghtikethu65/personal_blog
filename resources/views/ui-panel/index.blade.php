@@ -39,20 +39,20 @@
                   <div class="col-md-2"></div>
                 </div>
               </div>
-                  
+
                 <!-- NAVBAR SEXTION -->
                 <div class="position-sticky" id="navbar">
-                  <a href="index.html">HOME</a>
-                  <a href="javascript:void(0)">ABOUT ME</a>
-                  <a href="javascript:void(0)">SKILLS</a>
-                  <a href="posts.html">BLOGS</a>
-                </div>               
+                  <a href="">HOME</a>
+                  <a href="">BLOGS</a>
+                  <a href="{{ url('/register') }}" class="float-right">REGISTER</a>
+                  <a href="{{ url('/login') }}" class="float-right">LOGIN</a>
+                </div>
 
-                
+
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- ABOUT ME & SKILLS SECTION-->  
+                            <!-- ABOUT ME & SKILLS SECTION-->
                     <div class="aboutme">
                       <div class="row">
                         <div class="col-md-5">
@@ -83,7 +83,7 @@
                               </div>
                             </div>
                           </div>
-                        </div>  
+                        </div>
                         <div class="col-md-7">
                           <br>
                           <h4 class="text-center">MY SKILLS</h4>
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-3">
                                 HTML
-                            </div>                            
+                            </div>
                           </div>
 
                         </div>
