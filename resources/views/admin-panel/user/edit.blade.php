@@ -83,43 +83,31 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h5>User</h5>
-
-                                @if (Session('successMsg'))
-
-                                    <div class="alert alert-success alert-dismissible show fade">
-                                        <div>{{ Session('successMsg') }}</div>
-                                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                                <h5>Edit-User</h5>
+                                <form action="{{ url('admin/users/'.$user->id.'/update') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" name="name" value="{{ $user->name }}" class="form-control">
                                     </div>
-
-                                @endif
-
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($users as $user)
-                                            <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->status }}</td>
-                                                <td>
-                                                    <a href="{{ url('admin/users/' . $user->id . '/edit') }}"
-                                                        class="btn btn-success btn-sm">Edit</a>
-                                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="email" name="email" value="{{ $user->email }}" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Status</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="">Select Status</option>
+                                            <option value="admin" @if ($user->status == "admin") selected @endif>
+                                                Admin
+                                            </option>
+                                            <option value="user" @if ($user->status == "user") selected @endif>
+                                                User
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary">Update</button>
+                                </form>
                             </div>
                         </div>
                     </div>

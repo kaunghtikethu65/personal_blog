@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
 
     //User
     Route::get('/users','App\Http\Controllers\admin\UserController@index');
+    Route::get('/users/{id}/edit','App\Http\Controllers\admin\UserController@edit');
+    Route::post('/users/{id}/update','App\Http\Controllers\admin\UserController@update');
 });
 
 Auth::routes();
