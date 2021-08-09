@@ -17,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\UiController@index');
 
 //Admin
-Route::get('/admin','App\Http\Controllers\admin\AdminDashboardController@index');
+Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], function () {
+    Route::get('/dashboard','App\Http\Controllers\admin\AdminDashboardController@index');
+
+    //User
+    Route::get('/users','App\Http\Controllers\admin\UserController@index');
+});
 
 Auth::routes();
 

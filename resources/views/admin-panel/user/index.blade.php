@@ -80,17 +80,38 @@
                 </div>
                 {{-- main content --}}
                 <div class="main">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quidem error? Ab voluptate,
-                        vel, adipisci temporibus animi quae soluta facilis dicta reprehenderit atque veritatis alias
-                        aspernatur nesciunt sequi! Eum, laboriosam.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quidem error? Ab voluptate,
-                        vel, adipisci temporibus animi quae soluta facilis dicta reprehenderit atque veritatis alias
-                        aspernatur nesciunt sequi! Eum, laboriosam.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quidem error? Ab voluptate,
-                        vel, adipisci temporibus animi quae soluta facilis dicta reprehenderit atque veritatis alias
-                        aspernatur nesciunt sequi! Eum, laboriosam.
-                    </p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>User</h5>
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $user )
+                                        <tr>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->status }}</td>
+                                            <td>
+                                                <a href="" class="btn btn-success btn-sm">Edit</a>
+                                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
