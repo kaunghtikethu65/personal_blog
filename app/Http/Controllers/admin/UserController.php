@@ -32,4 +32,11 @@ class UserController extends Controller
         ]);
         return redirect('/admin/users')->with('successMsg', 'You have successfully updated!');
     }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin/users')->with('successMsg', 'You have successfully deleted!');
+    }
 }
