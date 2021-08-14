@@ -1,5 +1,5 @@
 @extends('ui-panel.master')
-@section('title','index')
+@section('title', 'index')
 @section('content')
 
     <!-- ABOUT ME & SKILLS SECTION-->
@@ -23,39 +23,35 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="total-project mb-2">
-                            <i class="fa fa-project-diagram"></i>
+                            <i class="fa fa-project-diagram fontawesome"></i>
                             <br>
                             <strong>5</strong>
-                            <p class="text-center">Total Projects</p>
+                            <p>Total Projects</p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="total-student">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users fontawesome"></i>
                             <br>
-                            <strong>2500</strong>
-                            <p class="text-center">Total Students</p>
+                            <strong>500</strong>
+                            <p>Total Students</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7" id="mySkills">
                 <br>
-                <h4 class="text-center">MY SKILLS</h4>
-                <br>
+                <h3 class="text-center">MY SKILLS</h3>
 
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-md-9">
-                        <div class="progress mt-2" style=" border: 1px solid gray;">
-                            <div class="progress-bar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0"
-                                aria-valuemax="100">
-                                90%
+                        <div class="progress mt-2 border border-white">
+                            <div class="progress-bar" style="width: 95%;">
+                                95%
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        HTML
-                    </div>
+                    <div class="col-md-3">HTML</div>
                 </div>
 
             </div>

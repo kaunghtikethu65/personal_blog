@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
     Route::get('/users/{id}/edit','App\Http\Controllers\admin\UserController@edit');
     Route::post('/users/{id}/update','App\Http\Controllers\admin\UserController@update');
     Route::post('/users/{id}/delete','App\Http\Controllers\admin\UserController@delete');
+
+    //Skill
+    // Route::resource('skills', 'App\Http\Controllers\admin\SkillController');
+    Route::resource('skills', SkillController::class);
 });
 
 Auth::routes();
