@@ -79,7 +79,7 @@
                 {{-- side bar menu --}}
                 <div class="sidenav">
                     <a href="{{ url('/admin/users') }}">User</a>
-                    <a href="{{ url('/admin/users') }}">Skill</a>
+                    <a href="{{ url('/admin/skills') }}">Skill</a>
                 </div>`
                 {{-- main content --}}
                 <div class="main">

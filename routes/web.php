@@ -27,8 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
     Route::post('/users/{id}/delete','App\Http\Controllers\admin\UserController@delete');
 
     //Skill
-    // Route::resource('skills', 'App\Http\Controllers\admin\SkillController');
-    Route::resource('skills', SkillController::class);
+    Route::resource('skills', 'App\Http\Controllers\admin\SkillController');
+    // Route::resource('skills', SkillController::class);
 });
 
 Auth::routes();
