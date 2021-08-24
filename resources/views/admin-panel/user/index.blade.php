@@ -16,6 +16,8 @@
 
                 @endif
 
+                <!-- User一覧標示処理 -->
+                <!-- 参照コントローラー /*UserController*/ -->
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>

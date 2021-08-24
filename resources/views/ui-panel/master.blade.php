@@ -44,7 +44,8 @@
                     </div>
                 </div>
 
-                <!-- NAVBAR SEXTION -->
+                <!-- NAVBAR SECTION =>Login,Logout,register 処理 -->
+                <!-- 参照コントローラー =>LoginController,RegisterController -->
                 <div class="position-sticky" id="navbar">
                     <a href="">HOME</a>
                     <a href="">BLOGS</a>

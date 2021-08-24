@@ -51,7 +51,7 @@ class SkillController extends Controller
             'percent' => $request->percent
         ]);
         //更新完了後Skill画面に戻す、成功メッセージを標示する
-        return redirect('admin/skills')->with('successMsg','You have successfully created!');
+        return redirect('admin/skills')->with('successMsg', 'You have successfully created!');
     }
 
     /**
@@ -63,7 +63,7 @@ class SkillController extends Controller
     public function show($id)
     {
         //
-        return "show page" .$id;
+        return "show page" . $id;
     }
 
     /**
@@ -106,12 +106,20 @@ class SkillController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     *Skill Delete処理
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        //SELECT * FROM skills WHERE $id=??;
+        // Skill::find($id)->delete();  //easy way
+
+        //deleteボタンを押下した時渡した＄idを取得しテーブルカラムを削除する
+        $skill = Skill::find($id);
+        $skill->delete();
+
+        //削除完了後Skill画面に戻す、成功メッセージを標示する
+        return redirect('admin/skills')->with('successMsg', 'You have successfully deleted!');
     }
 }

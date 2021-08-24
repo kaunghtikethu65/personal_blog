@@ -44,12 +44,18 @@
                                     <td>{{ $skill->name }}</td>
                                     <td>{{ $skill->percent }}</td>
                                     <td>
-                                        <a href="{{ url('admin/skills/'.$skill->id.'/edit') }}" class="btn btn-info btn-sm">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash-alt"></i> Delete
-                                        </a>
+
+                                        <form action="{{ url('admin/skills/'.$skill->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="{{ url('admin/skills/' . $skill->id . '/edit') }}"
+                                                class="btn btn-info btn-sm">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are sure you want to delete?')">
+                                                <i class="fa fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
