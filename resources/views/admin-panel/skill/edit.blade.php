@@ -1,5 +1,5 @@
 @extends('admin-panel.master')
-@section('title', 'skill index')
+@section('title', 'skill edit')
 @section('content')
 
 <div class="container">
@@ -8,16 +8,18 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Skill Create Form</div>
+                    <div class="card-title">Skill Edit Form</div>
                 </div>
 
-                <form action="{{ url('admin/skills') }}" method="POST">
+                <form action="{{ url('admin/skills/'.$skill->id) }}" method="POST">
+                    @method('PUT')
                     @csrf
+
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Enter skill name" value="{{ old('name') }}">
+                                placeholder="Enter skill name" value="{{ $skill->name ?? old('name') }}">
                             @error('name')
                                 <span class="text-danger"><small>{{ $message }}</small></span>
                             @enderror
@@ -26,7 +28,7 @@
                             <label for="">Percent</label>
                             <input type="text" name="percent"
                                 class="form-control mb-3 @error('percent') is-invalid @enderror"
-                                placeholder="Enter skill percent" value="{{ old('percent') }}">
+                                placeholder="Enter skill percent" value="{{ $skill->percent ?? old('percent') }}">
                             @error('percent')
                                 <span class="text-danger"><small>{{ $message }}</small></span>
                             @enderror
