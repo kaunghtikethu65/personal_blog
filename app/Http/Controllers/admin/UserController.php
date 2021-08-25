@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         //登録済みのユーザ全員を取得
-        $users = User::all();
+        $users = User::paginate(5);
         //取得したユーザを「user.index」画面に渡す
         return view('admin-panel.user.index')->with('users', $users);
     }

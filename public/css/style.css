@@ -16,7 +16,7 @@ body {
     text-align: center;
   }
 
-  #headerImg { 
+  #headerImg {
     width: 100%;
     border-radius: 50%;
   }
@@ -24,18 +24,18 @@ body {
   .sticky {
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 5;
   }
-  
+
   .sticky + .content {
     padding-top: 60px;
   }
-  
+
   #navbar {
     overflow: hidden;
     background-color: black;
   }
-  
+
   #navbar a {
     float: left;
     display: block;
@@ -46,17 +46,17 @@ body {
     text-decoration: none;
     font-size: 15px;
   }
-  
+
   #navbar a:hover {
     background-color: #ddd;
     color: black;
   }
-  
+
   #navbar a.active {
     background-color: gray;
     color: white;
   }
-  
+
   .aboutme{
     padding: 10px;
     text-align: justify;
@@ -71,10 +71,10 @@ body {
     font-size: 35px;
     padding: 5px;
     color: blue;
-   
+
   }
-  
- 
+
+
 
   /* MY PROJECT  */
   .project-img {
@@ -162,22 +162,22 @@ body {
 }
 
 @media (max-width: 770px) {
-  #headerImg { 
+  #headerImg {
     width: 60%;
   }
  }
 
  /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-   
+
 }
 
  /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-   
+
 }
 
  /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    
+
 }

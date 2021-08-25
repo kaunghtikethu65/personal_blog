@@ -39,16 +39,16 @@
                   <div class="col-md-2"></div>
                 </div>
               </div>
-                  
+
                 <!-- NAVBAR  -->
                 <div class="position-sticky" id="navbar">
                   <a href="index.html">HOME</a>
                   <a href="javascript:void(0)">ABOUT ME</a>
                   <a href="javascript:void(0)">SKILLS</a>
                   <a href="posts.html">BLOGS</a>
-                </div>               
+                </div>
 
-                
+
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
@@ -168,8 +168,8 @@
 
                   <div class="col-sm-12 col-md-4 mb-4">
                     <h5>CONTACT INFO</h5>
-                    <span> <i class="fas fa-mobile-alt"></i> 09403438913 </span> <br>
-                    <span> <i class="far fa-envelope"></i> yms.yemyintsoe@gmail.com </span>
+                    <span> <i class="fas fa-mobile-alt"></i> </span> <br>
+                    <span> <i class="far fa-envelope"></i>  </span>
                   </div>
 
                   <div class="col-sm-12 col-md-4">

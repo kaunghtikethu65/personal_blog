@@ -22,7 +22,6 @@
             width: 200px;
             height: 100%;
             padding: 15px;
-            padding-top: 65px;
             background-color: black;
             position: fixed;
         }
@@ -38,7 +37,17 @@
         .main {
             margin-left: 200px;
             font-size: 18px;
-            padding: 60px 20px;
+            padding: 20px;
+        }
+
+        .mainCol{
+            padding: 0px;
+        }
+
+        .navbar{
+            position: fixed;
+            top: 0;
+            z-index: 5;
         }
 
     </style>
@@ -47,9 +56,9 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mainCol">
                 {{-- navigation --}}
-                <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark position-sticky">
                     <div class="container-fluid">
                         <a class="navbar-brand text-white" href="#">Code-late</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
