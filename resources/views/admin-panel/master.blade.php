@@ -89,6 +89,7 @@
                 <div class="sidenav">
                     <a href="{{ url('/admin/users') }}">User</a>
                     <a href="{{ url('/admin/skills') }}">Skill</a>
+                    <a href="{{ route('projects.index') }}">Project</a>
                 </div>`
                 {{-- main content --}}
                 <div class="main">

@@ -29,6 +29,10 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
     //Skill
     Route::resource('skills', 'App\Http\Controllers\admin\SkillController');
     // Route::resource('skills', SkillController::class);
+
+    //Project
+    Route::resource('projects', 'App\Http\Controllers\admin\ProjectController');
+    // Route::resource('projects', ProjectController::class);
 });
 
 Auth::routes();
