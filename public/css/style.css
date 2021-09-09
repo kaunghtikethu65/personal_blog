@@ -62,7 +62,7 @@ body {
     text-align: justify;
     overflow: hidden;
   }
-  .total-project , .total-student {
+  .total-project , .total-student, .single-project {
     text-align: center;
     border: 1px solid #AEB6BF;
     border-radius: 5px;

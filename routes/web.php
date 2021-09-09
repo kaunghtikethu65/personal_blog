@@ -33,6 +33,10 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
     //Project
     Route::resource('projects', 'App\Http\Controllers\admin\ProjectController');
     // Route::resource('projects', ProjectController::class);
+
+    //StudentCount
+    Route::get('student_counts', 'App\Http\Controllers\admin\StudentCountControler@index');
+    Route::post('student_counts/store', 'App\Http\Controllers\admin\StudentCountControler@store');
 });
 
 Auth::routes();

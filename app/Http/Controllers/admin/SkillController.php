@@ -39,7 +39,7 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //NULLの時のエラーチャック
+        //NULL時のエラーチャック
         $request->validate([
             'name' => 'required',
             'percent' => 'required'
@@ -88,7 +88,7 @@ class SkillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //NULLの時のエラーチャック
+        //NULL時のエラーチャック
         $request->validate([
             'name' => 'required',
             'percent' => 'required'
