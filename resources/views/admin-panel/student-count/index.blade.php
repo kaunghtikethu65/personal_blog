@@ -1,5 +1,5 @@
 @extends('admin-panel.master')
-@section('title', 'project index')
+@section('title', 'student index')
 @section('content')
 
     <div class="container">
@@ -39,6 +39,7 @@
                             </form>
                         @endif
 
+                        {{-- Student Count追加処理 --}}
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -50,9 +51,21 @@
                                 <tr>
                                     <td>{{ $student->count }}</td>
                                     <td>
-                                            <a href="" class="btn btn-info btn-sm">
-                                                <i class="fa fa-edit"></i> Add
-                                            </a>
+                                        <button class="btn btn-info btn-sm" id="addBtn">
+                                            <i class="fa fa-plus-circle"></i> Add More
+                                        </button>
+
+                                        <form action="" method="POST" class="col-md-6" id="addForm" style="display: none">
+                                            @csrf
+                                            <div class="input-group">
+                                                <input type="number" name="count" class="form-control"
+                                                    placeholder="Enter Student count"
+                                                    style="border-radius: 4px 0px 0px 4px">
+                                                <button class="btn btn-primary" style="border-radius: 0px 4px 4px 0px">
+                                                    <i class="fa fa-plus-circle"></i> Add
+                                                </button>
+                                            </div>
+                                        </form>
                                     </td>
                                 </tr>
                             </tbody>
@@ -67,4 +80,15 @@
         </div>
     </div>
 
+@endsection
+
+@section('javascript')
+    <script>
+        $(document).ready(function() {
+            $('#addBtn').click(function () {
+                $('#addForm').css('display','block');
+                $(this).css('display','none');
+            });
+        });
+    </script>
 @endsection
