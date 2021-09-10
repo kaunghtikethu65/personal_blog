@@ -13,8 +13,8 @@ class StudentCountControler extends Controller
         //学生又は友達のデータを取得
         $studentCount = StudentCount::all();
         //学生又は友達のデータを検索条件＝＞「id=1」
-        $student = StudentCount::find(2);
-        //取得又友達のデータを「student-count.index」画面に渡す
+        $student = StudentCount::find(1);
+        //取得した学生又友達のデータを「student-count.index」画面に渡す
         return view('admin-panel.student-count.index', compact('studentCount', 'student'));
     }
 
@@ -22,7 +22,7 @@ class StudentCountControler extends Controller
     {
         //NULL時のエラーチャック
         $request->validate([
-            'count' => 'required'
+            'count' => 'required',
         ]);
         StudentCount::create([
             'count' => $request->count,

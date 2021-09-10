@@ -48,15 +48,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{ $student->count }}</td>
+                                    {{-- <td>{{ $student->count }}</td> --}}
                                     <td>
-                                        <form action="" method="POST">
-                                            @method('DELETE')
-                                            @csrf
                                             <a href="" class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i> Add
                                             </a>
-                                        </form>
                                     </td>
                                 </tr>
                             </tbody>
