@@ -23,7 +23,7 @@
                             </div>
                         @endif
 
-                        {{-- $student_countsテーブルに値は'0'の場合 --}}
+                        {{-- $student_countsテーブルに値無しの場合下記のフォウムを表示する --}}
                         @if ($studentCount->count() < 1)
                             <form action="{{ url('admin/student_counts/store') }}" method="POST">
                                 @csrf
@@ -48,7 +48,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    {{-- <td>{{ $student->count }}</td> --}}
+                                    <td>{{ $student->count }}</td>
                                     <td>
                                             <a href="" class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i> Add
