@@ -55,16 +55,23 @@
                                             <i class="fa fa-plus-circle"></i> Add More
                                         </button>
 
-                                        <form action="" method="POST" class="col-md-6" id="addForm" style="display: none">
+                                        <form action="{{ url('admin/student_counts/' . $student->id . '/update') }}"
+                                            method="POST" class="col-md-6" id="addForm" style="display: none">
                                             @csrf
                                             <div class="input-group">
-                                                <input type="number" name="count" class="form-control"
+                                                <input type="number" name="count"
+                                                    class="form-control @error('count')
+                                                is-invalid @enderror "
                                                     placeholder="Enter Student count"
                                                     style="border-radius: 4px 0px 0px 4px">
-                                                <button class="btn btn-primary" style="border-radius: 0px 4px 4px 0px">
+                                                <button class="btn btn-primary" type="submit"
+                                                    style="border-radius: 0px 4px 4px 0px">
                                                     <i class="fa fa-plus-circle"></i> Add
                                                 </button>
                                             </div>
+                                            @error('count')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
                                         </form>
                                     </td>
                                 </tr>
@@ -84,10 +91,11 @@
 
 @section('javascript')
     <script>
+        //Add Moreボタン押下時InputBox表示の動作
         $(document).ready(function() {
-            $('#addBtn').click(function () {
-                $('#addForm').css('display','block');
-                $(this).css('display','none');
+            $('#addBtn').click(function() {
+                $('#addForm').css('display', 'block');
+                $(this).css('display', 'none');
             });
         });
     </script>

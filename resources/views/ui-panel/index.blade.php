@@ -9,16 +9,10 @@
                 <br>
                 <h3 class="text-center">ABOUT ME</h3>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat fugiat
-                    soluta consectetur reprehenderit facere, quis error quidem harum quam
-                    laborum inventore quasi minima ipsum asperiores laboriosam ipsa enim dolor
-                    perferendis.
+
                 </p>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat fugiat
-                    soluta consectetur reprehenderit facere, quis error quidem harum quam
-                    laborum inventore quasi minima ipsum asperiores laboriosam ipsa enim dolor
-                    perferendis.
+
                 </p>
                 <div class="row">
                     <div class="col-md-6">
@@ -34,7 +28,8 @@
                         <div class="total-student">
                             <i class="fas fa-users fontawesome"></i>
                             <br>
-                            <strong>500</strong>
+                            {{-- 本来追加した友達又は学生(任意)数のみ表示する --}}
+                            <strong>{{ $stuCount->count }}</strong>
                             <p>Total Students</p>
                         </div>
                     </div>

@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
     //StudentCount
     Route::get('student_counts', 'App\Http\Controllers\admin\StudentCountControler@index');
     Route::post('student_counts/store', 'App\Http\Controllers\admin\StudentCountControler@store');
+    Route::post('student_counts/{id}/update', 'App\Http\Controllers\admin\StudentCountControler@update');
 });
 
 Auth::routes();

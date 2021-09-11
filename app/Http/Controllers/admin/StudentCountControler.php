@@ -29,4 +29,18 @@ class StudentCountControler extends Controller
         ]);
         return back();
     }
+
+
+    public function update(Request $request, $id)
+    {
+        $stuUpdate = StudentCount::find($id);
+        $request->validate([
+            'count' => 'required',
+        ]);
+
+        $stuUpdate->update([
+            'count' => $stuUpdate->count + $request->count,
+        ]);
+        return back();
+    }
 }
