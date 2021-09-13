@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //UI
 Route::get('/', 'App\Http\Controllers\UiController@index');
+Route::get('/posts', 'App\Http\Controllers\UiController@postIndex');
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], function () {

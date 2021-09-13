@@ -137,8 +137,11 @@ body {
   }
 
   /* POST PAGE  */
-.post {
+.blog {
   padding: 20px;
+}
+.blog img{
+    width: 100%;
 }
 .siderbar {
   padding: 20px;

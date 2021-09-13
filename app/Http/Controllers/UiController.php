@@ -26,4 +26,9 @@ class UiController extends Controller
 
         return view('ui-panel.index', compact('skills', 'projects', 'stuCount'));
     }
+
+    public function postIndex()
+    {
+        return view('ui-panel.posts');
+    }
 }

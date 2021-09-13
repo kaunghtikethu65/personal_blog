@@ -47,8 +47,8 @@
                 <!-- NAVBAR SECTION =>Login,Logout,register 処理 -->
                 <!-- 参照コントローラー =>LoginController,RegisterController -->
                 <div class="position-sticky" id="navbar">
-                    <a href="">HOME</a>
-                    <a href="">BLOGS</a>
+                    <a href="{{ url('/') }}">HOME</a>
+                    <a href="{{ url('/posts') }}">BLOGS</a>
 
                     @if (Auth::check())
                         <a href="{{ url('/register') }}"
