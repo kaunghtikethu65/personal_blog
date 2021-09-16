@@ -19,6 +19,7 @@ Route::get('/posts', 'App\Http\Controllers\UiController@postIndex');
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], function () {
+
     Route::get('/dashboard','App\Http\Controllers\admin\AdminDashboardController@index');
 
     //User
@@ -39,6 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
     Route::get('student_counts', 'App\Http\Controllers\admin\StudentCountControler@index');
     Route::post('student_counts/store', 'App\Http\Controllers\admin\StudentCountControler@store');
     Route::post('student_counts/{id}/update', 'App\Http\Controllers\admin\StudentCountControler@update');
+
+    //Category
+    Route::resource('categories','App\Http\Controllers\admin\CategoryController');
 });
 
 Auth::routes();

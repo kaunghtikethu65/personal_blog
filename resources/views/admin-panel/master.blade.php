@@ -28,7 +28,7 @@
 
         .sidenav a {
             display: block;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             color: white;
             padding: 6px;
@@ -60,7 +60,7 @@
                 {{-- navigation --}}
                 <nav class="navbar navbar-expand-lg navbar-light bg-dark position-sticky">
                     <div class="container-fluid">
-                        <a class="navbar-brand text-white" href="#">Code-late</a>
+                        <a class="navbar-brand text-white" href="{{ url('admin/dashboard') }}">Code-late</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +90,8 @@
                     <a href="{{ url('/admin/users') }}">User</a>
                     <a href="{{ url('/admin/skills') }}">Skill</a>
                     <a href="{{ route('projects.index') }}">Project</a>
-                    <a href="{{ url('admin/student_counts') }}">Student</a>
+                    <a href="{{ url('admin/student_counts') }}">Student Count</a>
+                    <a href="{{ url('admin/categories') }}">Category</a>
                 </div>`
                 {{-- main content --}}
                 <div class="main">
