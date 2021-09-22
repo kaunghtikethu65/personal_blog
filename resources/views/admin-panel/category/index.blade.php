@@ -43,10 +43,10 @@
                                         <td>{{ $category->name }}</td>
                                         <td>
 
-                                            <form action="" method="POST">
+                                            <form action="{{ url('admin/categories/'.$category->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href=""
+                                                <a href="{{ url('admin/categories/'.$category->id.'/edit') }}"
                                                     class="btn btn-info btn-sm">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>

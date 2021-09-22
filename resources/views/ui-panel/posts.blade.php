@@ -35,7 +35,12 @@
                 <br>
                 <h5>Categories</h5>
                 <ul>
-                    <li> <a href="">HTML</a> </li>
+                    @foreach ($categories as $category)
+                        <li>
+                            <a href="">{{ $category->name }}</a>
+                        </li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>

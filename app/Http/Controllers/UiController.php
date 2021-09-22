@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Skill,Project,StudentCount};
+use App\Models\{Skill,Project,StudentCount,Category};
 
 class UiController extends Controller
 {
@@ -29,6 +29,7 @@ class UiController extends Controller
 
     public function postIndex()
     {
-        return view('ui-panel.posts');
+        $categories = Category::all();
+        return view('ui-panel.posts',compact('categories'));
     }
 }

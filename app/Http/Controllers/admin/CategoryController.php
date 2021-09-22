@@ -66,7 +66,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin-panel.category.edit',compact('category'));
     }
 
     /**
@@ -78,7 +79,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            //同じ名データ名を入力可する「,name,'.$id」追加
+            'name' => 'required|unique:categories,name,'.$id
+        ]);
+        Category::find($id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect('admin/categories')->with('successMsg','You have successfully updated!');
     }
 
     /**
@@ -89,6 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Category::find($id)->delete();
+      return back()->with('successMsg','You have successfully deleted!');
     }
 }
