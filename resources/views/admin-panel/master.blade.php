@@ -92,6 +92,7 @@
                     <a href="{{ route('projects.index') }}">Project</a>
                     <a href="{{ url('admin/student_counts') }}">Student Count</a>
                     <a href="{{ url('admin/categories') }}">Category</a>
+                    <a href="{{ url('admin/posts') }}">Post</a>
                 </div>`
                 {{-- main content --}}
                 <div class="main">

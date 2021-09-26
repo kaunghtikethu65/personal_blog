@@ -43,6 +43,9 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
 
     //Category
     Route::resource('categories','App\Http\Controllers\admin\CategoryController');
+
+    //Post
+    Route::resource('posts', 'App\Http\Controllers\admin\PostController');
 });
 
 Auth::routes();
