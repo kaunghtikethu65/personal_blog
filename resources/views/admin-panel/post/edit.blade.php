@@ -1,5 +1,5 @@
 @extends('admin-panel.master')
-@section('title', 'category index')
+@section('title', 'post index')
 @section('content')
 
     <div class="container">

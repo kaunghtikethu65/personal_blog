@@ -1,5 +1,5 @@
 @extends('admin-panel.master')
-@section('title', 'category index')
+@section('title', 'post index')
 @section('content')
 
     <div class="container">
@@ -36,19 +36,24 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Content</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($categories as $category)
+                                @foreach ($posts as $post)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $post->id }}</td>
+                                        <td>{{ $post->category->name }}</td>
                                         <td>
-
-                                            <form action="{{ url('admin/categories/'.$category->id) }}" method="POST">
+                                            <img src="{{ asset('storage/post-images/'.$post->image) }}" alt="" width="100px">
+                                        </td>
+                                        <td>{{ $post->title }}</td>
+                                        <td>{{ $post->content }}</td>
+                                        <td>
+                                            <form action="" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="{{ url('admin/categories/'.$category->id.'/edit') }}"
+                                                <a href=""
                                                     class="btn btn-info btn-sm">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
@@ -59,13 +64,13 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                     {{-- card-footer --}}
                     <div class="card-footer text-muted">
-                        {{-- {{ $categories->links('pagination::bootstrap-4') }} --}}
+                        {{-- {{ $posts->links('pagination::bootstrap-4') }} --}}
                     </div>
                 </div>
             </div>
