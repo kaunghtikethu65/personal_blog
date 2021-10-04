@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
@@ -87,7 +88,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('admin-panel.post.edit');
+        $categories = Category::all();
+        $post = Post::find($id);
+        return view('admin-panel.post.edit',compact('categories','post'));
     }
 
     /**
@@ -99,7 +102,30 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->validate([
+            'category_id' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg',
+            'title' => 'required',
+            'content' => 'required',
+        ]);
         //
+        $post = Post::Find($id);
+        if($request->hasFile('image'))
+        {
+            $postImage = $post->image;
+            File::delete('storage/post-images/'.$postImage);
+
+            $image = $request->image;
+            $imageName = uniqid().'_'.$image->getClientOriginalName();
+
+            $image->storeAs('public/post-images',$imageName);
+
+            $data['image'] = $imageName;
+        }
+
+        $post->update($data);
+
+        return redirect()->route('posts.index')->with('successMsg','You have successfully updated!');
     }
 
     /**
@@ -111,5 +137,13 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::find($id);
+        $postImage = $post->image;
+        File::delete('storage/post-images/'.$postImage);
+
+        $post->delete();
+        return redirect()->route('posts.index')->with('successMsg','You have successfully deleted!');
     }
 }
+
+////////////////////////////////////Video->51 & 52 replay
