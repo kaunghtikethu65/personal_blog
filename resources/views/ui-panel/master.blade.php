@@ -12,9 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <!-- CUSTOM CSS  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -24,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-4">
-                            {{-- <img src="images/yms.jpg" id="headerImg" alt=""> --}}
+                            <img src="{{ asset('images/kht.jpg') }}" id="headerImg" alt="">
                         </div>
                         <div class="col-md-4">
                             <br><br><br>
@@ -120,7 +119,7 @@
         </div>
     </div>
     <!-- CUSTOMS JS  -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <!-- BOOTSTRAP JS  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

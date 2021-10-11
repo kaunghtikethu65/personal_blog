@@ -40,6 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{-- Post一連表示処理 --}}
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td>{{ $post->id }}</td>
@@ -50,6 +51,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->content }}</td>
                                         <td>
+                                            {{-- Post「編集」と「削除」 --}}
                                             <form action="{{ url('admin/posts/'.$post->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf

@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin-panel.post.index',compact('posts'));
+        return view('admin-panel.post.index', compact('posts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin-panel.post.create',compact('categories'));
+        return view('admin-panel.post.create', compact('categories'));
     }
 
     /**
@@ -53,11 +53,11 @@ class PostController extends Controller
         /*取得した画像($image)のデータから「getClientOriginalName()のfunction」を使い、画像の名だけを取得し、$imageNameに代入
          画像($image)のデータは複数入れる可能性があるため「uniqid().'_'.」キーで画像ファイルを自動保存する
          */
-        $imageName = uniqid().'_'.$image->getClientOriginalName();
+        $imageName = uniqid() . '_' . $image->getClientOriginalName();
         /*画像または動画データをデータベースに登録する時①ロカールのフォルダーStorageと②データベース両方にも保存する必要がある。
         ①[local=>storage/app/public/post-images]「storeAs('','')function」を使い保存先('public/post-images')と保存したい変数名($imageName)で指定
         */
-        $image->storeAs('public/post-images',$imageName);
+        $image->storeAs('public/post-images', $imageName);
         //②データベースへ登録保存する
         Post::create([
             'category_id' => $request->category_id,
@@ -90,7 +90,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $post = Post::find($id);
-        return view('admin-panel.post.edit',compact('categories','post'));
+        return view('admin-panel.post.edit', compact('categories', 'post'));
     }
 
     /**
@@ -104,32 +104,36 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'category_id' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg',   //「nullable」ならデータが無くて更新成功
             'title' => 'required',
             'content' => 'required',
         ]);
-        //
+
         $post = Post::Find($id);
-        if($request->hasFile('image'))
-        {
+        //requestにImageファイルが新たに追加されたらデータベースに更新する。Imageファイルが新にあるかどうかを「hasFile()」で確認する
+        if ($request->hasFile('image')) {
+            //更新した新しImageを入れ替える為ロカールフォルダーStorageの中の元Imageを削除する必要がある
+            //112行＄postにある元Imageを$postImageに代入し「File::delete」function を使ってロカールStorageのImageを削除する
             $postImage = $post->image;
-            File::delete('storage/post-images/'.$postImage);
+            //use Illuminate\Support\Facades\File;(★File function利用する為必要Use)
+            File::delete('storage/post-images/' . $postImage);
 
+            //元のImageファイルが削除完了後$requestに更新した新しImageをデータベースとロカールにCreateする「アップデート」= Create function↓
             $image = $request->image;
-            $imageName = uniqid().'_'.$image->getClientOriginalName();
-
-            $image->storeAs('public/post-images',$imageName);
-
+            $imageName = uniqid() . '_' . $image->getClientOriginalName();
+            //ロカールImageをアップデートする
+            $image->storeAs('public/post-images', $imageName);
+            //$imageNameだけデータベースにアップデートが必要なので配列でImageを入れ替える
             $data['image'] = $imageName;
         }
-
+        //requestにImageファイルが新たに無ければそのままアップデートする。
         $post->update($data);
 
-        return redirect()->route('posts.index')->with('successMsg','You have successfully updated!');
+        return redirect()->route('posts.index')->with('successMsg', 'You have successfully updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Post削除処理
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -139,11 +143,10 @@ class PostController extends Controller
         //
         $post = Post::find($id);
         $postImage = $post->image;
-        File::delete('storage/post-images/'.$postImage);
-
+        //ロカールのImageを削除する
+        File::delete('storage/post-images/' . $postImage);
+        //データベースのImageを削除する
         $post->delete();
-        return redirect()->route('posts.index')->with('successMsg','You have successfully deleted!');
+        return redirect()->route('posts.index')->with('successMsg', 'You have successfully deleted!');
     }
 }
-
-////////////////////////////////////Video->51 & 52 replay

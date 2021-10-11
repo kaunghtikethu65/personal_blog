@@ -5,20 +5,21 @@
     <div class="row">
         <!-- BLOGS -->
         <div class="col-md-8">
-            <div class="blog">
-                <img src="images/post1.jpg" alt="">
-                <br><br>
-                <h6>HOW TO BECOME A PROFESSTIONAL WEB DEVELOPER</h6>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit debitis ducimus
-                    animi, molestias sequi quaerat? Minima modi numquam eligendi dignissimos
-                    doloribus beatae, autem adipisci, quidem laudantium corrupti nulla delectus
-                    dolore.
-                </p>
-                <a href="post-details.html">
-                    <button class="btn-info btn btn-sm">Read More <i class="fas fa-angle-double-right"></i> </button>
-                </a>
-            </div>
+            @foreach ($posts as $post)
+                <div class="blog">
+                    <img src="{{ asset('storage/post-images/' . $post->image) }}"
+                        style="border: 1px solid gray; height: 400px;" alt="">
+                    <br><br>
+                    <h5>{{ $post->title }}</h5>
+                    <p>{{ $post->content }}</p>
+                    <a href="{{ url('/posts/'.$post->id.'/details') }}">
+                        <button class="btn-info btn btn-sm">
+                            Read More <i class="fas fa-angle-double-right"></i>
+                        </button>
+                    </a>
+                </div>
+            @endforeach
+
         </div>
 
         <!-- SIDE BAR -->
