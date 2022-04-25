@@ -30,12 +30,28 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
 
+    /**
+     * Redirect to previous page after logged in
+     *ログイン後、前のページにリダイレクトし処理を続く
+     * @param
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        $previousURL = url()->previous();
+        $baseURL = url()->to('/');
+        if ($previousURL != $baseURL.'/login') {
+            session()->put('url.intended' ,$previousURL);
+        }
+        return view('auth.login');
+    }
+
     protected function authenticated(Request $request, $user)
     {
-        if(Auth::user()->status == 'admin') {
+        if (Auth::user()->status == 'admin') {
             return redirect('admin/dashboard');
-        }else{
-            return redirect('/');
+        } else {
+            $this->showLoginForm();
         }
     }
 

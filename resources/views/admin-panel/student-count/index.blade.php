@@ -48,33 +48,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{{ $student->count }}</td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm" id="addBtn">
-                                            <i class="fa fa-plus-circle"></i> Add More
-                                        </button>
+                                @if ($student)
+                                    <tr>
+                                        <td>{{ $student->count }}</td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" id="addBtn">
+                                                <i class="fa fa-plus-circle"></i> Add More
+                                            </button>
 
-                                        <form action="{{ url('admin/student_counts/' . $student->id . '/update') }}"
-                                            method="POST" class="col-md-6" id="addForm" style="display: none">
-                                            @csrf
-                                            <div class="input-group">
-                                                <input type="number" name="count"
-                                                    class="form-control @error('count')
-                                                is-invalid @enderror "
-                                                    placeholder="Enter Student count"
-                                                    style="border-radius: 4px 0px 0px 4px">
-                                                <button class="btn btn-primary" type="submit"
-                                                    style="border-radius: 0px 4px 4px 0px">
-                                                    <i class="fa fa-plus-circle"></i> Add
-                                                </button>
-                                            </div>
-                                            @error('count')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </form>
-                                    </td>
-                                </tr>
+                                            <form action="{{ url('admin/student_counts/' . $student->id . '/update') }}"
+                                                method="POST" class="col-md-6" id="addForm" style="display: none">
+                                                @csrf
+                                                <div class="input-group">
+                                                    <input type="number" name="count"
+                                                        class="form-control @error('count') is-invalid @enderror " required
+                                                        placeholder="Enter Student count"
+                                                        style="border-radius: 4px 0px 0px 4px">
+                                                    <button class="btn btn-primary" type="submit"
+                                                        style="border-radius: 0px 4px 4px 0px">
+                                                        <i class="fa fa-plus-circle"></i> Add
+                                                    </button>
+                                                </div>
+                                                @error('count')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

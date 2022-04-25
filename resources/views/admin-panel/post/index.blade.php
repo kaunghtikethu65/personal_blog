@@ -31,7 +31,7 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No</th>
                                     <th>Category</th>
                                     <th>Image</th>
                                     <th>Title</th>
@@ -41,15 +41,15 @@
                             </thead>
                             <tbody>
                                 {{-- Post一連表示処理 --}}
-                                @foreach ($posts as $post)
+                                @foreach ($posts as $index => $post)
                                     <tr>
-                                        <td>{{ $post->id }}</td>
+                                        <td>{{ $index + $posts->firstItem() }}</td>
                                         <td>{{ $post->category->name }}</td>
                                         <td>
                                             <img src="{{ asset('storage/post-images/'.$post->image) }}" alt="" width="100px">
                                         </td>
                                         <td>{{ $post->title }}</td>
-                                        <td>{{ $post->content }}</td>
+                                        <td><textarea readonly>{{ $post->content }}</textarea></td>
                                         <td>
                                             {{-- Post「編集」と「削除」 --}}
                                             <form action="{{ url('admin/posts/'.$post->id) }}" method="POST">
@@ -63,6 +63,9 @@
                                                     onclick="return confirm('Are sure you want to delete?')">
                                                     <i class="fa fa-trash-alt"></i> Delete
                                                 </button>
+                                                <a href="{{ url('admin/posts/'.$post->id) }}" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-comments">Comments</i>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
@@ -72,7 +75,7 @@
                     </div>
                     {{-- card-footer --}}
                     <div class="card-footer text-muted">
-                        {{-- {{ $posts->links('pagination::bootstrap-4') }} --}}
+                        {{ $posts->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

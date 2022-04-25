@@ -32,7 +32,7 @@
                             {{-- <p class="yms">KAUNG HTIKE THU</p> --}}
                             <p class="hc">THE HAPPY CODER</p>
                             <br>
-                            <a href="posts.html">
+                            <a href="{{ url('/posts') }}">
                                 <button class="btn btn-info">
                                     <i class="fa fa-plus-circle"></i>
                                     Explore My Blogs

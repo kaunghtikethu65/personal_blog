@@ -30,6 +30,7 @@ class UserController extends Controller
         //「user.index」画面から「edit」画面に元のデータ（Name,Email,Status）を渡す
         //=SELECT * FROM users WHERE id = $id
         $user = User::find($id);
+        dd($user);
         //受け取った元のデータ（Name,Email,Status）をedit画面に渡す
         return view('admin-panel.user.edit', compact('user'));
     }

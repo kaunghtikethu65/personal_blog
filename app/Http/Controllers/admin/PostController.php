@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -17,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->paginate(10);
         return view('admin-panel.post.index', compact('posts'));
     }
 
@@ -77,7 +78,29 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $comments = Comment::where('post_id', $id)->get();
+        return view('admin-panel.post.comment', compact('comments'));
+    }
+
+    /**
+     * comment show-hide処理
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showHideComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        //コメントのstatusは'show'か'hide'かを確認し該当値を代入する
+        $status = $comment->status == 'show' ? 'hide' : 'show';
+
+        //$commentテーブルを更新
+        $comment->update([
+                'status' => $status,
+            ]);
+
+        return back()->with('successMsg', 'comment status changed successfully');
     }
 
     /**

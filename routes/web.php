@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\UiController@index');
 Route::get('/posts', 'App\Http\Controllers\UiController@postIndex');
 Route::get('/posts/{id}/details', 'App\Http\Controllers\UiController@postDetailsIndex');
+Route::get('/search_posts', [UiController::class,'search']);
+Route::get('/search_posts_by_category/{catId}', [UiController::class,'searchByCategory']);
+
+//like.disLike
+Route::post('/post/like/{postId}', 'App\Http\Controllers\LikeDislikeController@like');
+Route::post('/post/disLike/{postId}', 'App\Http\Controllers\LikeDislikeController@disLike');
+
+//comment
+Route::post('/post/comment/{postId}', [CommentController::class, 'comment']);
 
 //Admin
 Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], function () {
@@ -47,6 +59,9 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'isAdmin']], functio
 
     //Post
     Route::resource('posts', 'App\Http\Controllers\admin\PostController');
+
+    //Comment showhide
+    Route::post('comment/{commentId}/show_hide', [PostController::class, 'showHideComment']);
 });
 
 Auth::routes();

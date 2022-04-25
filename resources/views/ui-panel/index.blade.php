@@ -9,7 +9,7 @@
                 <br>
                 <h3 class="text-center">ABOUT ME</h3>
                 <p>
-
+                    私は、自修学館日本語学校2年、東京マルチメディア専門学校２年を卒業後、株式会社ElectricArchitectのシステム開発部部下でWebシステム開発、システムテスト、構築、PCキッティングなどを3年間担当し,実務経験を積んでいます。3年目は転職を決めて大企業で入社しました。
                 </p>
                 <p>
 
@@ -29,7 +29,12 @@
                             <i class="fas fa-users fontawesome"></i>
                             <br>
                             {{-- 本来追加した友達又は学生(任意)数のみ表示する --}}
-                            <strong>{{ $stuCount->count }}</strong>
+                            @if ($stuCount)
+                            <strong>
+                                {{ $stuCount->count }}
+                            </strong>
+                            @endif
+
                             <p>Total Students</p>
                         </div>
                     </div>
@@ -93,102 +98,23 @@
         </p>
         <br>
         <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <a href="post-details.html">
-                    <div class="latest-post">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSY-Fqgt98110_CnRGAMtbzlYAKLsT1EIRqL5b4A9ESe3fhsaym&usqp=CAU"
-                            alt="">
-                        <small>25 October, 2017 | By KHT </small>
-                        <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH
-                                SOMEONE</strong></p>
+            @foreach ($posts as $post)
+                <div class="col-sm-6 col-md-4">
+                    <a href="{{ url('posts/'.$post->id.'/details') }}">
+                        <img src="{{ asset('storage/post-images/'.$post->image) }}" alt="">
+                        <br><br>
+                        <small>{{ date('d-M-Y', strtotime($post->created_at)) }}</small>
+                        <h6 class="mt-2">
+                            {{ $post->title }}
+                        </h6>
                         <P>
-                            Computers have become ubiquitous in almost every facet of our lives.
-                            At
-                            work, desk jockeys spend hours in front of their desktops, while
-                            delivery people scan bar codes with handhelds and workers in the
-                            field
-                            stay
+                            {{ substr($post->content, 0, 200) }} ....
                         </P>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a href="post-details.html">
-                    <div class="latest-post">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRK2tvT1fAPcQNFpZvDaqmAgxkGCqGWADA0OMwdzULJWRScYI2A&usqp=CAU"
-                            alt="">
-                        <small>25 October, 2021 | By KHT</small>
-                        <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH
-                                SOMEONE</strong></p>
-                        <P>
-                            Computers have become ubiquitous in almost every facet of our lives.
-                            At
-                            work, desk jockeys spend hours in front of their desktops, while
-                            delivery people scan bar codes with handhelds and workers in the
-                            field
-                            stay
-                        </P>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a href="post-details.html">
-                    <div class="latest-post">
-                        <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-                            alt="">
-                        <small>25 October, 2017 | By YMS </small>
-                        <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH
-                                SOMEONE</strong></p>
-                        <P>
-                            Computers have become ubiquitous in almost every facet of our lives.
-                            At
-                            work, desk jockeys spend hours in front of their desktops, while
-                            delivery people scan bar codes with handhelds and workers in the
-                            field
-                            stay
-                        </P>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a href="post-details.html">
-                    <div class="latest-post">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSQXE_7Go4FovH9bstguTZSXGwPapB5CwcraJtmLQICkJe9weEk&usqp=CAU"
-                            alt="">
-                        <small>25 October, 2017 | By YMS </small>
-                        <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH
-                                SOMEONE</strong></p>
-                        <P>
-                            Computers have become ubiquitous in almost every facet of our lives.
-                            At
-                            work, desk jockeys spend hours in front of their desktops, while
-                            delivery people scan bar codes with handhelds and workers in the
-                            field
-                            stay
-                        </P>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a href="post-details.html">
-                    <div class="latest-post">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQK60mFUNV8eXgrHZYzJwIKiYTPPhPW_jqFKlUcEcQGvxrF6F21&usqp=CAU"
-                            alt="">
-                        <small>25 October, 2017 | By YMS </small>
-                        <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH
-                                SOMEONE</strong></p>
-                        <P>
-                            Computers have become ubiquitous in almost every facet of our lives.
-                            At
-                            work, desk jockeys spend hours in front of their desktops, while
-                            delivery people scan bar codes with handhelds and workers in the
-                            field
-                            stay
-                        </P>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
+    </div>
     </div>
 
 @endsection
